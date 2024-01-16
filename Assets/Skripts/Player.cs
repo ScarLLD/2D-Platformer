@@ -3,9 +3,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
-        
-    private Rigidbody2D _rigidBody;
+    [SerializeField] private float _jumpForce;
 
+    private float _moveX;
+    private float _forceMultiple = 1000f;
+    private Rigidbody2D _rigidBody;
 
     private void Awake()
     {
@@ -14,12 +16,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        _rigidBody.MovePosition(_rigidBody.position + Vector2.right * moveX * _speed * Time.deltaTime);
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _rigidBody.AddForce(Vector2.up * 10f);
+            //_rigidBody.AddForce(Vector2.up * _jumpForce * _forceMultiple);
+            _rigidBody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        _moveX = Input.GetAxis("Horizontal");
+        _rigidBody.MovePosition(_rigidBody.position + Vector2.right * _moveX * _speed * Time.deltaTime);
+
+        
     }
 }
