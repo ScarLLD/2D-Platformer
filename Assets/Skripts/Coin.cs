@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player>())
         {
-            CoinCountDisplay._score++;
+            CoinCountDisplay.Instance.IncreaseScore();
             Destroy(gameObject);
         }
     }

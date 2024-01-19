@@ -5,10 +5,18 @@ public class CoinCountDisplay : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
 
-    public static int _score = 0;
+    public static CoinCountDisplay Instance { get; set; }
 
-    public void Update()
+    private int _score = 0;
+
+    private void Awake()
     {
+        Instance = this;
+    }
+
+    public void IncreaseScore()
+    {
+        _score += 1;
         _scoreText.text = "Score: " + _score.ToString();
     }
 }
