@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -5,10 +6,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float _health;
+    [SerializeField] private float _damage;
     [SerializeField] private float _speed;
+    [SerializeField] private float _timeBetweenAttacks;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _groundRadius;
     [SerializeField] private float _maxEnemyDisctanse;
+    [SerializeField] private float _maxAttackDisctanse;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private LayerMask _enemyMask;
@@ -17,7 +22,7 @@ public class Player : MonoBehaviour
     private bool _facingRight = true;
     private float _moveX;
     private float _forceMultiple = 1000f;
-    private string _isRun = "isRun";    
+    private string _isRun = "isRun";
     private Rigidbody2D _rigidBody;
     private Animator _animator;
     private RaycastHit2D _ray;
@@ -56,17 +61,47 @@ public class Player : MonoBehaviour
         }
 
         if (_facingRight == true)
+        {
             _ray = Physics2D.Raycast(transform.position, transform.right, _maxEnemyDisctanse, _enemyMask);
+        }
         else
+        {
             _ray = Physics2D.Raycast(transform.position, -transform.right, _maxEnemyDisctanse, _enemyMask);
+        }
 
         Debug.DrawLine(transform.position, _ray.point);
+
+        if (_ray.distance <= _maxAttackDisctanse && _ray.distance > 0)
+        {
+            StartCoroutine(AttackTarget());
+        }
+        else
+        {
+            StopCoroutine(AttackTarget());
+        }
+    }
+
+    private IEnumerator AttackTarget()
+    {
+        Enemy enemy = _ray.collider.gameObject.GetComponent<Enemy>();
+
+        enemy.GetDamage(_damage);
+
+        Debug.Log("attack");
+        Debug.Log(_ray.distance);
+
+        yield return new WaitForSeconds(_timeBetweenAttacks);
     }
 
     private void FixedUpdate()
     {
         _moveX = Input.GetAxis("Horizontal");
         _rigidBody.MovePosition(_rigidBody.position + Vector2.right * _moveX * _speed * Time.deltaTime);
+    }
+
+    public void GetDamage(float damage)
+    {
+
     }
 
     private void Flip()
