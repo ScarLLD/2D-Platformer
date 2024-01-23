@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinsSpawner : MonoBehaviour
+public class MedicineSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _placesParant;
-    [SerializeField] private Coin _cointPrefab;
+    [SerializeField] private Medicine _medicinePrefab;
 
     private List<Transform> _places;
 
@@ -24,7 +24,7 @@ public class CoinsSpawner : MonoBehaviour
         {
             int randomCoinIndex = Random.Range(0, _places.Count);
 
-            Instantiate(_cointPrefab, _places[randomCoinIndex].transform.position, Quaternion.identity);
+            Instantiate(_medicinePrefab, _places[randomCoinIndex].transform.position, Quaternion.identity);
             _places.Remove(_places[randomCoinIndex]);
         }
     }

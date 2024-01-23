@@ -340,14 +340,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b27366677aacb34b9c3661a0d709977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
-  _damage: 0
-  _speed: 0
-  _maxPlayerDisctanse: 0
-  _maxAttackDisctanse: 0
+  _health: 100
+  _damage: 15
+  _speed: 2
+  _timeBetweenAttacks: 1
+  _maxPlayerDisctanse: 10
+  _maxAttackDisctanse: 1.1
   _playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  _facingRight: 1
 --- !u!1 &339707567
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +540,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &541448228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541448229}
+  m_Layer: 0
+  m_Name: MedicinesPlaces
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &541448229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541448228}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.88, y: 7.58, z: -0.041054647}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 981232701}
+  - {fileID: 1522181653}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688703655
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +587,7 @@ GameObject:
   - component: {fileID: 688703661}
   - component: {fileID: 688703662}
   - component: {fileID: 688703663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _damage: 25
-  _speed: 8
+  _speed: 10
+  _timeBetweenAttacks: 1
   _jumpForce: 15
   _groundRadius: 0.2
   _maxEnemyDisctanse: 10
@@ -774,6 +810,52 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700445194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13965614, y: 7.1895247, z: -0.036910314}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &888539055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 888539057}
+  - component: {fileID: 888539056}
+  m_Layer: 0
+  m_Name: MedicineSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &888539056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888539055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05737327e3c00b4499a62e5c6d4380e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _placesParant: {fileID: 541448229}
+  _medicinePrefab: {fileID: 5578922769061422655, guid: 068fa5a64a4f1b74ebbf6896fffe6fac, type: 3}
+--- !u!4 &888539057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888539055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.13965614, y: 7.1895247, z: -0.036910314}
@@ -2003,6 +2085,37 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &981232700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981232701}
+  m_Layer: 0
+  m_Name: MedicinePlaces
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &981232701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981232700}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.81, y: -5.34, z: 0.01468746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 541448229}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1092705247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,7 +2126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092705248}
   m_Layer: 0
-  m_Name: CoinPlace
+  m_Name: CoinPlaces
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2181,6 +2294,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1522181652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1522181653}
+  m_Layer: 0
+  m_Name: MedicinePlaces
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1522181653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522181652}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.4, y: -1.24, z: 0.014481392}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 541448229}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1580624861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2191,7 +2335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1580624862}
   m_Layer: 0
-  m_Name: CoinPlace
+  m_Name: CoinPlaces
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2335,7 +2479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1677632387}
   m_Layer: 0
-  m_Name: CoinPlace
+  m_Name: CoinPlaces
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2474,6 +2618,8 @@ SceneRoots:
   - {fileID: 1230464566}
   - {fileID: 700445196}
   - {fileID: 477814306}
+  - {fileID: 888539057}
+  - {fileID: 541448229}
   - {fileID: 1165094262}
   - {fileID: 519420032}
   - {fileID: 1628210681}

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
     private bool _isGround;
     private bool _facingRight = true;
+    private bool _isTargetClose = false;
     private float _moveX;
     private float _forceMultiple = 1000f;
     private string _isRun = "isRun";
@@ -73,24 +74,33 @@ public class Player : MonoBehaviour
 
         if (_ray.distance <= _maxAttackDisctanse && _ray.distance > 0)
         {
-            StartCoroutine(AttackTarget());
+            if (_isTargetClose == false)
+            {
+                Enemy enemy = _ray.collider.gameObject.GetComponent<Enemy>();
+
+                StartCoroutine(Attack(enemy));
+                _isTargetClose = true;
+            }
         }
         else
         {
-            StopCoroutine(AttackTarget());
+            StopAllCoroutines();
+            _isTargetClose = false;
         }
     }
 
-    private IEnumerator AttackTarget()
+    private IEnumerator Attack(Enemy enemy)
     {
-        Enemy enemy = _ray.collider.gameObject.GetComponent<Enemy>();
+        bool isAttack = true;
 
-        enemy.GetDamage(_damage);
+        while (isAttack)
+        {
+            Debug.Log("player attack");
 
-        Debug.Log("attack");
-        Debug.Log(_ray.distance);
+            enemy.GetDamage(_damage);
 
-        yield return new WaitForSeconds(_timeBetweenAttacks);
+            yield return new WaitForSeconds(_timeBetweenAttacks);
+        }
     }
 
     private void FixedUpdate()
@@ -101,7 +111,14 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        Debug.Log("attack");
 
+        _health -= damage;
+    }
+
+    public void GetHealth(float _healthCount)
+    {
+        _health += _healthCount;
     }
 
     private void Flip()

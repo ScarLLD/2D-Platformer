@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -12,19 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _maxAttackDisctanse;
     [SerializeField] private LayerMask _playerMask;
 
-    private bool _facingRight = true;
+    private bool _isTargetClose = false;
     private RaycastHit2D _ray;
+    public bool _facingRight = true;
 
     private void Update()
     {
-        if (_facingRight == false && _moveX > 0)
-        {
-            Flip();
-        }
-        else if (_facingRight == true && _moveX < 0)
-        {
-            Flip();
-        }
 
         if (_facingRight == true)
         {
@@ -37,27 +29,51 @@ public class Enemy : MonoBehaviour
 
         Debug.DrawLine(transform.position, _ray.point);
 
-        if (_ray.distance <= _maxAttackDisctanse && _ray.distance > 0)
+        if (_ray.distance <= _maxPlayerDisctanse && _ray.distance > 0)
         {
-            Enemy enemy = _ray.collider.gameObject.GetComponent<Enemy>();
+            gameObject.GetComponent<PointByPointMover>().enabled = false;
 
-            enemy.GetDamage(_damage);
-
-            Debug.Log("attack");
             Debug.Log(_ray.distance);
+
+            Player player = _ray.collider.gameObject.GetComponent<Player>();
+
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _speed * Time.deltaTime);
+
+            if (_ray.distance <= _maxAttackDisctanse && _ray.distance > 0)
+            {
+                if (_isTargetClose == false)
+                {
+                    StartCoroutine(Attack(player));
+                    _isTargetClose = true;
+                }
+            }
+        }
+        else
+        {
+            StopAllCoroutines();
+
+            _isTargetClose = false;
+
+            gameObject.GetComponent<PointByPointMover>().enabled = true;
+        }
+    }
+
+    private IEnumerator Attack(Player player)
+    {
+        bool isAttack = true;
+
+        while (isAttack)
+        {
+            yield return new WaitForSeconds(_timeBetweenAttacks);
+
+            player.GetDamage(_damage);
         }
     }
 
     public void GetDamage(float damage)
     {
+        Debug.Log("Enemy attack");
 
-    }
-
-    private void Flip()
-    {
-        _facingRight = !_facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        _health -= damage;
     }
 }
