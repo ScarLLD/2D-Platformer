@@ -17,35 +17,21 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        _ray = Physics2D.Raycast(transform.position, transform.right * transform.localScale.x, _maxPlayerDisctanse, _playerMask);
 
-        if (_facingRight == true)
-        {
-            _ray = Physics2D.Raycast(transform.position, transform.right, _maxPlayerDisctanse, _playerMask);
-        }
-        else
-        {
-            _ray = Physics2D.Raycast(transform.position, -transform.right, _maxPlayerDisctanse, _playerMask);
-        }
-
-        Debug.DrawLine(transform.position, _ray.point);
-
-        if (_ray.distance <= _maxPlayerDisctanse && _ray.distance > 0)
+        if (_ray.collider)
         {
             gameObject.GetComponent<PointByPointMover>().enabled = false;
-
-            Debug.Log(_ray.distance);
 
             Player player = _ray.collider.gameObject.GetComponent<Player>();
 
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _speed * Time.deltaTime);
 
-            if (_ray.distance <= _maxAttackDisctanse && _ray.distance > 0)
+            if (_ray.distance <= _maxAttackDisctanse && _ray.distance > 0 && _isTargetClose == false)
             {
-                if (_isTargetClose == false)
-                {
-                    StartCoroutine(Attack(player));
-                    _isTargetClose = true;
-                }
+                StartCoroutine(Attack(player));
+
+                _isTargetClose = true;
             }
         }
         else
@@ -72,8 +58,6 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        Debug.Log("Enemy attack");
-
         _health -= damage;
     }
 }

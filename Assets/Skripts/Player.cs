@@ -61,30 +61,23 @@ public class Player : MonoBehaviour
             _animator.SetBool(_isRun, true);
         }
 
-        if (_facingRight == true)
-        {
-            _ray = Physics2D.Raycast(transform.position, transform.right, _maxEnemyDisctanse, _enemyMask);
-        }
-        else
-        {
-            _ray = Physics2D.Raycast(transform.position, -transform.right, _maxEnemyDisctanse, _enemyMask);
-        }
+        _ray = Physics2D.Raycast(transform.position, transform.right * transform.localScale.x, _maxEnemyDisctanse, _enemyMask);
 
-        Debug.DrawLine(transform.position, _ray.point);
-
-        if (_ray.distance <= _maxAttackDisctanse && _ray.distance > 0)
+        if (_ray.collider)
         {
             if (_isTargetClose == false)
             {
                 Enemy enemy = _ray.collider.gameObject.GetComponent<Enemy>();
 
                 StartCoroutine(Attack(enemy));
+
                 _isTargetClose = true;
             }
         }
         else
         {
             StopAllCoroutines();
+
             _isTargetClose = false;
         }
     }
@@ -95,8 +88,6 @@ public class Player : MonoBehaviour
 
         while (isAttack)
         {
-            Debug.Log("player attack");
-
             enemy.GetDamage(_damage);
 
             yield return new WaitForSeconds(_timeBetweenAttacks);
@@ -111,8 +102,6 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        Debug.Log("attack");
-
         _health -= damage;
     }
 
