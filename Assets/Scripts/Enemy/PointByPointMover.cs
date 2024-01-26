@@ -3,16 +3,18 @@ using UnityEngine;
 public class PointByPointMover : MonoBehaviour
 {
     [SerializeField] private Transform _placesParant;
-    [SerializeField] private float _speed;
-
-    private Enemy _enemy;
+    
+    private float _speed;
+    private EnemyMover _enemy;
     private Transform[] _places;
     private int _placeIndex;
 
 
     private void Awake()
     {
-        _enemy = gameObject.GetComponent<Enemy>();
+        _speed = gameObject.GetComponent<EnemyMover>().GetSpeed();
+
+        _enemy = gameObject.GetComponent<EnemyMover>();
 
         _places = new Transform[_placesParant.childCount];
 
@@ -48,8 +50,8 @@ public class PointByPointMover : MonoBehaviour
     private void Flip()
     {
         _enemy._facingRight = !_enemy._facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 }
