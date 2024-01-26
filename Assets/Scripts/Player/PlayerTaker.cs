@@ -1,5 +1,8 @@
 using UnityEngine;
 
+[RequireComponent (typeof(PlayerHealth))]
+[RequireComponent (typeof(PlayerScore))]
+
 public class PlayerTaker : MonoBehaviour
 {
     private PlayerHealth _playerHealth;
@@ -7,8 +10,8 @@ public class PlayerTaker : MonoBehaviour
 
     private void Awake()
     {
-        _playerHealth = gameObject.GetComponent<PlayerHealth>();
-        _playerScore = gameObject.GetComponent<PlayerScore>();
+        _playerHealth = GetComponent<PlayerHealth>();
+        _playerScore = GetComponent<PlayerScore>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,13 +21,12 @@ public class PlayerTaker : MonoBehaviour
         if (item.TryGetComponent<Coin>(out Coin coin))
         {
             _playerScore.IncreaseScore();
+            Destroy(item);
         }
         else if (item.TryGetComponent<Medicine>(out Medicine medicine))
         {
-
-            _playerHealth.GetHealth(medicine.HealthCount);
-        }
-
-        Destroy(item);
+            _playerHealth.GetHealth(medicine.GetHealthCount);
+            Destroy(item);
+        }        
     }
 }

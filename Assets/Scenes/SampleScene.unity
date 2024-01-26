@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _placesParant: {fileID: 477814306}
-  _cointPrefab: {fileID: 2768760521415518824, guid: 04ba381f6cda98d4fbdff33a1e45961f, type: 3}
+  _itemPrefab: {fileID: 1747450350292359176, guid: 04ba381f6cda98d4fbdff33a1e45961f, type: 3}
 --- !u!4 &700445196
 Transform:
   m_ObjectHideFlags: 0
@@ -956,7 +956,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 888539057}
-  - component: {fileID: 888539056}
+  - component: {fileID: 888539058}
   m_Layer: 0
   m_Name: MedicineSpawner
   m_TagString: Untagged
@@ -964,20 +964,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &888539056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888539055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a05737327e3c00b4499a62e5c6d4380e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _placesParant: {fileID: 541448229}
-  _medicinePrefab: {fileID: 5578922769061422655, guid: 068fa5a64a4f1b74ebbf6896fffe6fac, type: 3}
 --- !u!4 &888539057
 Transform:
   m_ObjectHideFlags: 0
@@ -993,6 +979,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &888539058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888539055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ab0a30d3e714849b130eb69b51d929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _placesParant: {fileID: 541448229}
+  _itemPrefab: {fileID: 5559366040254336153, guid: 068fa5a64a4f1b74ebbf6896fffe6fac, type: 3}
 --- !u!1 &948201440
 GameObject:
   m_ObjectHideFlags: 0

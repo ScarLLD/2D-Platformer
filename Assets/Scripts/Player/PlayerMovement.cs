@@ -16,11 +16,12 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGround;
     private bool _facingRight = true;
     private string _isRun = "isRun";
+    private string _inputX = "Horizontal";
     private Rigidbody2D _rigidBody;
     private Animator _animator;
 
     private void Awake()
-    {        
+    {
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        _moveX = Input.GetAxis("Horizontal");
+        _moveX = Input.GetAxis(_inputX);
 
         _isGround = Physics2D.OverlapCircle(_groundCheck.position, _groundRadius, _groundMask);
 
@@ -41,23 +42,12 @@ public class PlayerMovement : MonoBehaviour
             _rigidBody.AddForce(Vector2.up * _jumpMultiple * _jumpForce);
         }
 
-        if (_facingRight == false && _moveX > 0)
-        {
-            Flip();
-        }
-        else if (_facingRight == true && _moveX < 0)
+        if (_facingRight == false && _moveX > 0 || _facingRight == true && _moveX < 0)
         {
             Flip();
         }
 
-        if (_moveX == 0)
-        {
-            _animator.SetBool(_isRun, false);
-        }
-        else
-        {
-            _animator.SetBool(_isRun, true);
-        }
+        _animator.SetBool(_isRun, _moveX != 0);
     }
 
     private void Move(float direction)

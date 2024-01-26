@@ -2,5 +2,7 @@ using UnityEngine;
 
 public class Medicine : MonoBehaviour
 {
-    [SerializeField] public float HealthCount;
+    [SerializeField] private float HealthCount;
+
+    public float GetHealthCount => HealthCount;
 }

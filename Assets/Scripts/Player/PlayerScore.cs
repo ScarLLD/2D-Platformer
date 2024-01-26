@@ -12,8 +12,5 @@ public class PlayerScore : MonoBehaviour
         _scoreDisplay.DisplayScore(_score);
     }
 
-    public float GetScore()
-    {
-        return _score;
-    }
+    public float GetScore => _score;
 }

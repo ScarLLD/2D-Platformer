@@ -7,6 +7,12 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float _timeBetweenAttacks;
 
     private Coroutine _attackCoroutine;
+    private WaitForSeconds _waitForSeconds;
+
+    private void Awake()
+    {
+        _waitForSeconds = new WaitForSeconds(_timeBetweenAttacks);
+    }
 
     public void StartAttack(PlayerHealth player)
     {
@@ -15,7 +21,8 @@ public class EnemyAttack : MonoBehaviour
 
     public void EndAttack()
     {
-        StopCoroutine(_attackCoroutine);
+        if (_attackCoroutine != null)
+            StopCoroutine(_attackCoroutine);
     }
 
     private IEnumerator Attack(PlayerHealth player)
@@ -24,14 +31,9 @@ public class EnemyAttack : MonoBehaviour
 
         while (isAttack)
         {
-            yield return new WaitForSeconds(_timeBetweenAttacks);
+            yield return _waitForSeconds;
 
             player.GetDamage(_damage);
         }
-    }
-
-    public Coroutine GetCoroutine()
-    {
-        return _attackCoroutine;
     }
 }

@@ -1,19 +1,22 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PointByPointMover))]
+[RequireComponent(typeof(MoveToTarget))]
+
 public class EnemyMover : MonoBehaviour
 {
-
     [SerializeField] private float _speed;
 
     private PointByPointMover _pointByPointMover;
     private MoveToTarget _moveToTarget;
 
-    public bool _facingRight = true;
-
     private void Awake()
-    {        
-        _pointByPointMover = gameObject.GetComponent<PointByPointMover>();
-        _moveToTarget = gameObject.GetComponent<MoveToTarget>();
+    {
+        _pointByPointMover = GetComponent<PointByPointMover>();
+        _moveToTarget = GetComponent<MoveToTarget>();
+
+        _pointByPointMover.Init(this, _speed);
+        _moveToTarget.Init(_speed);
     }
 
     public void EnablePoinByPointMover()
@@ -26,10 +29,5 @@ public class EnemyMover : MonoBehaviour
     {
         _pointByPointMover.enabled = false;
         _moveToTarget.enabled = true;
-    }
-
-    public float GetSpeed()
-    {
-        return _speed;
     }
 }

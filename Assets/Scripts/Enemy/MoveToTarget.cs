@@ -7,13 +7,13 @@ public class MoveToTarget : MonoBehaviour
 
     private float _speed;
 
-    void Start()
-    {
-        _speed = gameObject.GetComponent<EnemyMover>().GetSpeed();
-    }
-
-    void Update()
+    private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, _speed * _speedMultiple * Time.deltaTime);
+    }
+
+    public void Init(float speed)
+    {
+        this._speed = speed;
     }
 }

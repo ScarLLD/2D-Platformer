@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private float _damage;
@@ -13,9 +12,15 @@ public class PlayerAttack : MonoBehaviour
     private bool _isTargetClose = false;
     private RaycastHit2D _hit;
     private Coroutine _attackCoroutine;
+    private WaitForSeconds _waitForSeconds;
+
+    private void Awake()
+    {
+        _waitForSeconds = new WaitForSeconds(_timeBetweenAttacks);
+    }
 
     private void Update()
-    {        
+    {
         _hit = Physics2D.Raycast(transform.position, transform.right * transform.localScale.x, _maxEnemyDisctanse, _enemyMask);
 
         if (_hit.collider)
@@ -25,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
                 EnemyHealth enemy = _hit.collider.gameObject.GetComponent<EnemyHealth>();
 
                 _attackCoroutine = StartCoroutine(Attack(enemy));
-                    
+
                 _isTargetClose = true;
             }
         }
@@ -45,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         {
             enemy.GetDamage(_damage);
 
-            yield return new WaitForSeconds(_timeBetweenAttacks);
+            yield return _waitForSeconds;
         }
     }
 }

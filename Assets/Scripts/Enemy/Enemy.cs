@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class EnemyHit : MonoBehaviour
+[RequireComponent (typeof(EnemyAttack))]
+[RequireComponent (typeof(EnemyMover))]
+
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _maxPlayerDisctanse;
     [SerializeField] private float _maxAttackDistanse;
@@ -13,8 +16,8 @@ public class EnemyHit : MonoBehaviour
 
     private void Awake()
     {
-        _enemyAttack = gameObject.GetComponent<EnemyAttack>();
-        _enemyMover = gameObject.GetComponent<EnemyMover>();
+        _enemyAttack = GetComponent<EnemyAttack>();
+        _enemyMover = GetComponent<EnemyMover>();
     }
 
     private void Update()
@@ -34,15 +37,11 @@ public class EnemyHit : MonoBehaviour
         }
         else
         {
-            if (_enemyAttack.GetCoroutine() != null)
-            {
-                _enemyAttack.EndAttack();
+            _enemyAttack.EndAttack();
 
-                _isTargetClose = false;
-            }
+            _isTargetClose = false;
 
             _enemyMover.EnablePoinByPointMover();
         }
-
     }
 }
