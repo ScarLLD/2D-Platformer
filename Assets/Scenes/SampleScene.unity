@@ -327,6 +327,101 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+<<<<<<< Updated upstream
+=======
+--- !u!95 &297713952
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297713944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 695ca36e886379f40ae5a02e0182783d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &297713953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297713944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e01b1a8d7aab3c84c984b0d44440165e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 688703659}
+  _speedMultiple: 2
+--- !u!114 &297713955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297713944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5826f2ce54c0f43917c80c2b5ff17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxPlayerDisctanse: 10
+  _maxAttackDistanse: 1.3
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &297713956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297713944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63888144df5f366489671bf90efe9aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 15
+  _timeBetweenAttacks: 1
+--- !u!114 &297713957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297713944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d522da11e132604182a8e34dc4aaed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+--- !u!114 &297713958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297713944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b04cec9fbf95a4388be1298dca495f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 4
+>>>>>>> Stashed changes
 --- !u!1 &339707567
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +807,69 @@ CapsuleCollider2D:
   m_Offset: {x: 0.017076015, y: -0.24623597}
   m_Size: {x: 1.5755129, y: 1.692311}
   m_Direction: 0
+<<<<<<< Updated upstream
+=======
+--- !u!114 &688703664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688703655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b914033bb3a5464badbbb505dd9d05a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _walkSpeed: 6
+  _jumpForce: 2
+  _groundRadius: 0.3
+  _groundCheck: {fileID: 339707568}
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &688703665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688703655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0879a84a594df5f4fabf755b4b7c6830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 0
+  _currentHealth: 0
+  _text: {fileID: 0}
+--- !u!114 &688703666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688703655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e7b1a752a48a649bda2b79a8c85231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &688703667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688703655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013a66eb6db680a45b24db6b0862208b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: 0
+  _scoreDisplay: {fileID: 1758720970}
+>>>>>>> Stashed changes
 --- !u!1 &700445194
 GameObject:
   m_ObjectHideFlags: 0
