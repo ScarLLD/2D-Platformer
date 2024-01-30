@@ -6,9 +6,11 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _currentHealth;
+    [SerializeField] public float _timeMoveSlider;
     [SerializeField] public TMP_Text _text;
     [SerializeField] public Slider _firstSlider;
     [SerializeField] public Slider _SecondtSlider;
+    
 
     private void Awake()
     {
@@ -19,6 +21,11 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         ChangeHealthBarValue();
+    }
+
+    private void Update()
+    {
+        _SecondtSlider.value = Mathf.MoveTowards(_SecondtSlider.value, _currentHealth, _timeMoveSlider);
     }
 
     public void GetDamage(float damage)
@@ -36,10 +43,7 @@ public class PlayerHealth : MonoBehaviour
     private void ChangeHealthBarValue()
     {
         _text.SetText($"{_currentHealth} / {_maxHealth}");
-        _firstSlider.value = _currentHealth;
-
-        float healthStorage = _SecondtSlider.value;
-        _SecondtSlider.value = Mathf.MoveTowards(healthStorage, _currentHealth, 1f) ;
+        _firstSlider.value = _currentHealth;            
     }
 
     private void SetDefaultSliderValue(Slider slider)

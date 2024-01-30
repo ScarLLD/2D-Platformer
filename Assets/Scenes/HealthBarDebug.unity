@@ -1340,10 +1340,6 @@ GameObject:
   - component: {fileID: 1172216979}
   - component: {fileID: 1172216978}
   - component: {fileID: 1172216977}
-  - component: {fileID: 1172216976}
-  - component: {fileID: 1172216975}
-  - component: {fileID: 1172216974}
-  - component: {fileID: 1172216973}
   - component: {fileID: 1172216972}
   - component: {fileID: 1172216971}
   m_Layer: 8
@@ -1415,70 +1411,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1172216973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172216970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 013a66eb6db680a45b24db6b0862208b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _score: 2
-  _scoreDisplay: {fileID: 0}
---- !u!114 &1172216974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172216970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e7b1a752a48a649bda2b79a8c85231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1172216975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172216970}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821a99577a928d24f99d99988540eadf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 25
-  _timeBetweenAttacks: 1
-  _maxEnemyDisctanse: 10
-  _maxAttackDistanse: 1.3
-  _enemyMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1172216976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172216970}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b914033bb3a5464badbbb505dd9d05a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _walkSpeed: 6
-  _jumpForce: 2
-  _groundRadius: 0.3
-  _groundCheck: {fileID: 415604116}
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &1172216977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,6 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
+  _timeMoveSlider: 0
   _text: {fileID: 2042807212}
   _firstSlider: {fileID: 988229526}
   _SecondtSlider: {fileID: 7491135}
