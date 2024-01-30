@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
-  _timeMoveSlider: 0
+  _timeMoveSlider: 0.1
   _text: {fileID: 2042807212}
   _firstSlider: {fileID: 988229526}
   _SecondtSlider: {fileID: 7491135}
