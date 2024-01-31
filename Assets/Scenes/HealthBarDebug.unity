@@ -226,55 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf2ee372fc36dc4d83c07c5230f7d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 1172216977}
   _timeMoveSlider: 1
-  _slider: {fileID: 7491135}
---- !u!1 &71295499
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 71295501}
-  - component: {fileID: 71295500}
-  m_Layer: 0
-  m_Name: HealthBarVisualizer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &71295500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71295499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe8c9aa73c261f45baea65f4087e38f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _smoothHealthBarSlider: {fileID: 7491136}
-  _healthBarSlider: {fileID: 988229528}
-  _healthBarText: {fileID: 2042807214}
---- !u!4 &71295501
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71295499}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1253.358, y: 547.4601, z: -8.92038}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &97315793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05879b6513241044fa9183a740471593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 988229526}
+  _playerHealth: {fileID: 1172216977}
 --- !u!1 &994516097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,8 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 100
-  _healthBar: {fileID: 71295500}
+  _currentHealth: 120
 --- !u!95 &1172216978
 Animator:
   serializedVersion: 5
@@ -2559,13 +2511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d056f8d16074e044ada488cb2bfa9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 1172216977}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 414592335}
   - {fileID: 440880458}
-  - {fileID: 71295501}
   - {fileID: 635077840}
   - {fileID: 1172216980}
   - {fileID: 1775757902}

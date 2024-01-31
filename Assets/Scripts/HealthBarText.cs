@@ -1,8 +1,12 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TMP_Text))]
+
 public class HealthBarText : MonoBehaviour
 {
+    [SerializeField] private PlayerHealth _playerHealth;
+
     private TMP_Text _text;
 
     private void Awake()
@@ -10,8 +14,23 @@ public class HealthBarText : MonoBehaviour
         _text = GetComponent<TMP_Text>();
     }
 
-    public void ChangeHealthBar(float health, float maxHealth)
+    private void OnEnable()
     {
-        _text.SetText($"{health} / {maxHealth}");
+        _playerHealth.AmountChanged += ChangeValue;
+    }
+
+    private void Start()
+    {
+        ChangeValue();
+    }
+
+    private void OnDisable()
+    {
+        _playerHealth.AmountChanged -= ChangeValue;
+    }
+
+    public void ChangeValue()
+    {
+        _text.SetText($"{_playerHealth.GetCurrentHealth} / {_playerHealth.GetMaxHealth}");
     }
 }
