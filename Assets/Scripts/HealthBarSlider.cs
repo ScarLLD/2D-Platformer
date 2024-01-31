@@ -5,41 +5,41 @@ using UnityEngine;
 
 public class HealthBarSlider : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] protected PlayerHealth _playerHealth;
 
-    private Slider _slider;
-    private float _maxSliderValue = 1;
+    protected Slider _slider;
+    protected float _maxSliderValue = 1;
 
-    private void Awake()
+    protected void Awake()
     {
         _slider = GetComponent<Slider>();
 
         SetDefaultValue();
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
-        _playerHealth.AmountChanged += ChangeValue;
+        _playerHealth.AmountChanged += OnAmountChanged;
     }
 
-    private void Start()
+    protected void Start()
     {
-        ChangeValue();
+        OnAmountChanged();
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
-        _playerHealth.AmountChanged -= ChangeValue;
+        _playerHealth.AmountChanged -= OnAmountChanged;
     }
 
-    public void ChangeValue()
+    public virtual void OnAmountChanged()
     {
         float currentHealthPercentage = _playerHealth.GetCurrentHealth / _playerHealth.GetMaxHealth;
 
         _slider.value = currentHealthPercentage;
     }
 
-    private void SetDefaultValue()
+    protected void SetDefaultValue()
     {
         _slider.maxValue = _maxSliderValue;
         _slider.minValue = 0;

@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float GetCurrentHealth => _currentHealth;
-    public float GetMaxHealth => _maxHealth;
-
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _currentHealth;
 
     public event Action AmountChanged;
 
+    public float GetCurrentHealth => _currentHealth;
+    public float GetMaxHealth => _maxHealth;
+ 
     public void GetDamage(float damage)
     {
         _currentHealth -= damage;
