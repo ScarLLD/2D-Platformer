@@ -11,27 +11,26 @@ public class SmoothHealthBarSlider : HealthBarSlider
     private Coroutine _changeSliderCoroutine;
     private float _currentHealthPercentage;
 
-    public override void OnAmountChanged()
+    public override void OnAmountChanged(float currentHealth, float maxHealth)
     {
         if (_changeSliderCoroutine != null)
         {
             StopCoroutine(_changeSliderCoroutine);
         }
 
-        _changeSliderCoroutine = StartCoroutine(ChangeSlider(_playerHealth.GetCurrentHealth, _playerHealth.GetMaxHealth));
+        _changeSliderCoroutine = StartCoroutine(ChangeSlider
+            (currentHealth, maxHealth));
     }
 
     private IEnumerator ChangeSlider(float currentHealth, float maxHealth)
     {
-        bool isChanging = true;
         _currentHealthPercentage = currentHealth / maxHealth;
 
-        while (isChanging)
+        while (_slider.value != _currentHealthPercentage)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _currentHealthPercentage, _timeMoveSlider * Time.deltaTime);
-
-            if (_slider.value == _currentHealthPercentage)
-                StopCoroutine(_changeSliderCoroutine);
+            _slider.value = Mathf.MoveTowards(_slider.value, 
+                _currentHealthPercentage, _timeMoveSlider * 
+                Time.deltaTime);
 
             yield return null;
         }

@@ -6,11 +6,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _currentHealth;
 
-    public event Action AmountChanged;
+    public event Action<float, float> AmountChanged;
 
     public float GetCurrentHealth => _currentHealth;
     public float GetMaxHealth => _maxHealth;
- 
+
     public void GetDamage(float damage)
     {
         _currentHealth -= damage;
@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
         if (_currentHealth < 0)
             _currentHealth = 0;
 
-        AmountChanged?.Invoke();
+        AmountChanged?.Invoke(_currentHealth ,_maxHealth);
     }
 
     public void GetHealth(float health)
@@ -28,6 +28,6 @@ public class PlayerHealth : MonoBehaviour
         if (_currentHealth > _maxHealth)
             _currentHealth = _maxHealth;
 
-        AmountChanged?.Invoke();
+        AmountChanged?.Invoke(_currentHealth, _maxHealth);
     }
 }
