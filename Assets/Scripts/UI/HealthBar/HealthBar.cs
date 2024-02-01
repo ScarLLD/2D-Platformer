@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
 
     protected void Start()
     {
-        OnAmountChanged(_playerHealth.GetCurrentHealth, _playerHealth.GetMaxHealth);
+        OnAmountChanged(_playerHealth.CurrentHealth, _playerHealth.MaxHealth);
     }
 
     protected void OnDisable()

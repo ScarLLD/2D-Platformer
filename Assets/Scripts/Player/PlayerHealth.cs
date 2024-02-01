@@ -8,10 +8,10 @@ public class PlayerHealth : MonoBehaviour
 
     public event Action<float, float> AmountChanged;
 
-    public float GetCurrentHealth => _currentHealth;
-    public float GetMaxHealth => _maxHealth;
+    public float CurrentHealth => _currentHealth;
+    public float MaxHealth => _maxHealth;
 
-    public void GetDamage(float damage)
+    public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
 
@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
         AmountChanged?.Invoke(_currentHealth ,_maxHealth);
     }
 
-    public void GetHealth(float health)
+    public void TakeHealth(float health)
     {
         _currentHealth += health;
 

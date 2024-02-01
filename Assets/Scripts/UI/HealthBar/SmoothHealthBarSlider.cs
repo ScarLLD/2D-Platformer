@@ -6,7 +6,7 @@ using System.Collections;
 
 public class SmoothHealthBarSlider : HealthBarSlider
 {
-    [SerializeField] private float _timeMoveSlider;
+    [SerializeField] private float _speed;
 
     private Coroutine _changeSliderCoroutine;
     private float _currentHealthPercentage;
@@ -29,7 +29,7 @@ public class SmoothHealthBarSlider : HealthBarSlider
         while (_slider.value != _currentHealthPercentage)
         {
             _slider.value = Mathf.MoveTowards(_slider.value, 
-                _currentHealthPercentage, _timeMoveSlider * 
+                _currentHealthPercentage, _speed * 
                 Time.deltaTime);
 
             yield return null;

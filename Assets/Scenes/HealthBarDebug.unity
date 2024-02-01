@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHealth: {fileID: 1172216977}
-  _timeMoveSlider: 1
+  _speed: 0.5
 --- !u!1 &97315793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,25 +1183,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1172216977}
         m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: GetDamage
+        m_MethodName: TakeDamage
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 15
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1489,7 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 120
+  _currentHealth: 70
 --- !u!95 &1172216978
 Animator:
   serializedVersion: 5
@@ -2316,7 +2304,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1172216977}
         m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: GetHealth
+        m_MethodName: TakeHealth
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

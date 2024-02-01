@@ -33,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
         {
             yield return _waitForSeconds;
 
-            player.GetDamage(_damage);
+            player.TakeDamage(_damage);
         }
     }
 }
