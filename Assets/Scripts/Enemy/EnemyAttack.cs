@@ -14,7 +14,7 @@ public class EnemyAttack : MonoBehaviour
         _waitForSeconds = new WaitForSeconds(_timeBetweenAttacks);
     }
 
-    public void StartAttack(PlayerHealth player)
+    public void StartAttack(Health player)
     {
         _attackCoroutine = StartCoroutine(Attack(player));
     }
@@ -25,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
             StopCoroutine(_attackCoroutine);
     }
 
-    private IEnumerator Attack(PlayerHealth player)
+    private IEnumerator Attack(Health player)
     {
         bool isAttack = true;
 

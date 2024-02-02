@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] protected PlayerHealth _playerHealth;
+    [SerializeField] protected Health _health;
 
     protected void OnEnable()
     {
-        _playerHealth.AmountChanged += OnAmountChanged;
+        _health.AmountChanged += OnAmountChanged;
     }
 
     protected void Start()
     {
-        OnAmountChanged(_playerHealth.CurrentHealth, _playerHealth.MaxHealth);
+        OnAmountChanged(_health.CurrentHealth, _health.MaxHealth);
     }
 
     protected void OnDisable()
     {
-        _playerHealth.AmountChanged -= OnAmountChanged;
+        _health.AmountChanged -= OnAmountChanged;
     }
 
     public virtual void OnAmountChanged(float currentHealth, float maxHealth) { }

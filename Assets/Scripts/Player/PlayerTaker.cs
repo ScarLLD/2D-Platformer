@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[RequireComponent (typeof(PlayerHealth))]
+[RequireComponent (typeof(Health))]
 [RequireComponent (typeof(PlayerScore))]
 
 public class PlayerTaker : MonoBehaviour
 {
-    private PlayerHealth _playerHealth;
+    private Health _playerHealth;
     private PlayerScore _playerScore;
 
     private void Awake()
     {
-        _playerHealth = GetComponent<PlayerHealth>();
+        _playerHealth = GetComponent<Health>();
         _playerScore = GetComponent<PlayerScore>();
     }
 

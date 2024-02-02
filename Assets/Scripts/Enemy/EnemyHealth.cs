@@ -4,12 +4,12 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float _health;
 
-    public void GetDamage(float damage)
+    public void TakeDamage(float damage)
     {
         _health -= damage;
     }
 
-    public void GetHealth(float health)
+    public void TakeHealth(float health)
     {
         _health += health;
         Debug.Log(_health);

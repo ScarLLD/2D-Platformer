@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (_hit.distance > 0 && _hit.distance <= _maxAttackDistanse && _isTargetClose == false)
             {
-                EnemyHealth enemy = _hit.collider.gameObject.GetComponent<EnemyHealth>();
+                Health enemy = _hit.collider.gameObject.GetComponent<Health>();
 
                 _attackCoroutine = StartCoroutine(Attack(enemy));
 
@@ -42,13 +42,13 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator Attack(EnemyHealth enemy)
+    private IEnumerator Attack(Health enemy)
     {
         bool isAttack = true;
 
         while (isAttack)
         {
-            enemy.GetDamage(_damage);
+            enemy.TakeDamage(_damage);
 
             yield return _waitForSeconds;
         }

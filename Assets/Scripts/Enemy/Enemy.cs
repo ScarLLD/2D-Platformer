@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
             if (_hit.distance > 0 && _hit.distance <= _maxAttackDistanse && _isTargetClose == false)
             {
-                _enemyAttack.StartAttack(_hit.collider.gameObject.GetComponent<PlayerHealth>());
+                _enemyAttack.StartAttack(_hit.collider.gameObject.GetComponent<Health>());
 
                 _isTargetClose = true;
             }
