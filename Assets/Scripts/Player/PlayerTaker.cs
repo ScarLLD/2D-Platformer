@@ -25,7 +25,7 @@ public class PlayerTaker : MonoBehaviour
         }
         else if (item.TryGetComponent<Medicine>(out Medicine medicine))
         {
-            _playerHealth.TakeHealth(medicine.GetHealthCount);
+            _playerHealth.Heal(medicine.GetHealthCount);
             Destroy(item);
         }        
     }

@@ -1,6 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+
+[RequireComponent(typeof(Health))]
 
 public class PlayerVampirism : MonoBehaviour
 {
@@ -51,17 +52,13 @@ public class PlayerVampirism : MonoBehaviour
             if (enemy.CurrentHealth > 0)
             {
                 enemy.TakeDamage(_vampirismDamage);
-                _player.TakeHealth(_vampirismDamage * _vampirismMultiple);
+                _player.Heal(_vampirismDamage * _vampirismMultiple);
             }
-
-            Debug.Log($"Vampirism Active - {timer}s ");
 
             yield return _timeBetwenVampirism;
         }
 
         StopCoroutine(_vampirismCoroutine);
-
-        Debug.Log($"Vampirism stoped");
 
         _isVampirism = false;
     }

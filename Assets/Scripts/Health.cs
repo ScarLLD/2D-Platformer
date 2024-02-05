@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
         AmountChanged?.Invoke(_currentHealth ,_maxHealth);
     }
 
-    public void TakeHealth(float health)
+    public void Heal(float health)
     {
         _currentHealth += health;
 
